@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/style.css';
+import moment from 'moment/moment';
 
 function Form() {
   const [inputValue, setInputValue] = useState('');
@@ -14,14 +15,41 @@ function Form() {
     snDecode();
   };
 
+  function dateFromDay(year, day) {
+    var date = new Date(year, 0); // initialize a date in `year-01-01`
+    return new Date(date.setDate(day)); // add the number of days
+  };
+
   const snDecode = () => {
-    const outputString = "Your guitar was made in 19";
     let sn = inputValue;
   
     switch (sn.length) {
         case 8:
-            const year = outputString + sn.charAt(0) + sn.charAt(4);
-            setReturnData(year);
+            const YY = sn.charAt(0) + sn.charAt(4);
+            const DDD = sn.charAt(1) + sn.charAt(2) + sn.charAt(3);
+            const RRR = sn.charAt(5) + sn.charAt(6) + sn.charAt(7);
+
+            let year = '';
+                switch (YY.charAt(0)) {
+                case '7':
+                case '8':
+                case '9':
+                    year = `19${YY}`;
+                    break;
+                case '0':
+                case '1':
+                case '2':
+                    year = `20${YY}`;
+                    break;
+                default:
+                    year = null;
+                    break;
+                }
+
+            let date = new String(dateFromDay(year, parseInt(DDD, 10))).slice(3,15);
+
+            const outputStatement =`This guitar was manufactured ${date}`  ;
+            setReturnData(outputStatement);
             break;
         case 9:
             setReturnData('Your SN is 9 chars');
@@ -65,7 +93,7 @@ function Form() {
             >
               Search
             </button>
-            <p className="return-data">{returnData}</p>
+            <p className="return-data">{returnData.toString()}</p>
             {/* Display the returnData value in the paragraph */}
           </div>
         </div>

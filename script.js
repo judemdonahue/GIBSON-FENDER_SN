@@ -43,3 +43,28 @@ function isValidGuitarSerial(serialNumber) {
   console.log(isValidGuitarSerial("CS10845")); // true (Custom Shop regular production model, 2001)
   console.log(isValidGuitarSerial("AS 123"));  // true (Signature model - Andy Summers ES-335)
   
+
+  //checkDigit()
+
+// if 8, then this
+
+// IF (starts with 99 then the guitar is dated to 1975)
+// IF (starts with 00 then the guitar is dated to 1976)
+// IF (starts with 06 then the guitar is dated to 1977)
+
+// ELSE check the YDDDYRRR
+
+// guitar is dated to whatever the YY is, i.e. (7)010(8)276 was produced in 19(7)(8)
+
+
+//
+
+
+// if 9, then this
+
+
+
+// if 4,5, or 6, then this
+
+const snInput = document.querySelectorAll('#sn-input');
+const submitBtn = document.querySelectorAll('#submit-btn');

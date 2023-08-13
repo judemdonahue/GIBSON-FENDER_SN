@@ -24,33 +24,29 @@ function Form() {
     let sn = inputValue;
   
     switch (sn.length) {
+
+      // 8 DIGIT SN START //
         case 8:
+          // SN destructuring to get identifying numbers
             const YY = sn.charAt(0) + sn.charAt(4);
             const DDD = sn.charAt(1) + sn.charAt(2) + sn.charAt(3);
             const RRR = sn.charAt(5) + sn.charAt(6) + sn.charAt(7);
-
-            let year = '';
-                switch (YY.charAt(0)) {
-                case '7':
-                case '8':
-                case '9':
-                    year = `19${YY}`;
-                    break;
-                case '0':
-                case '1':
-                case '2':
-                    year = `20${YY}`;
-                    break;
-                default:
-                    year = null;
-                    break;
-                }
-
+            // Declaring output variables
+            let year = ``;
+            let plant = ``;
+            // if SN starts with 7, 8, or 9, the year is '19xx', if SN starts with 0, 1, or 2, the year is '20xx'
+            year = (['7', '8', '9'].includes(YY.charAt(0))) ? `19${YY}` : (['0', '1', '2'].includes(YY.charAt(0))) ? `20${YY}` : year;
+            // if SN ranking # is <= 499 the guitar was produced in MI, or else was produced in TN
+            plant = (RRR <= 499) ? `Kalamzoo, MI` : `Nashville, TN`;
+            // String manipulation trimming the date value
             let date = new String(dateFromDay(year, parseInt(DDD, 10))).slice(3,15);
-
-            const outputStatement =`This guitar was manufactured ${date}`  ;
-            setReturnData(outputStatement);
+            // Output statement
+            const generatedOutput =`This guitar was manufactured ${date}, factory: ${plant}`  ;
+            setReturnData(generatedOutput);
             break;
+        // 8 DIGIT SN END //
+
+      // 9 DIGIT SN START //
         case 9:
             setReturnData('Your SN is 9 chars');
             break;

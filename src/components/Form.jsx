@@ -27,13 +27,36 @@ function Form() {
 
       // 8 DIGIT SN START //
         case 8:
+          // Setting exception for years '95, '96, '97
+          let firstTwoChars = sn.substring(0,2);
+          // Declaring output variables
+          let year = ``;
+          let plant = ``;
           // SN destructuring to get identifying numbers
-            const YY = sn.charAt(0) + sn.charAt(4);
-            const DDD = sn.charAt(1) + sn.charAt(2) + sn.charAt(3);
-            const RRR = sn.charAt(5) + sn.charAt(6) + sn.charAt(7);
-            // Declaring output variables
-            let year = ``;
-            let plant = ``;
+          let YY = sn.charAt(0) + sn.charAt(4);
+          let DDD = sn.charAt(1) + sn.charAt(2) + sn.charAt(3);
+          let RRR = sn.charAt(5) + sn.charAt(6) + sn.charAt(7);
+
+          switch (firstTwoChars) {
+            case `99`:
+              YY = `75`
+              DDD = sn.substring(2,5);
+              RRR = sn.substring(5,8);
+              break;
+            case `00`:
+              YY = `76`
+              DDD = sn.substring(2,5);
+              RRR = sn.substring(5,8);
+              break;
+            case `06`:
+              YY = `77`
+              DDD = sn.substring(2,5);
+              RRR = sn.substring(5,8);
+              break;
+          }
+
+          
+
             // if SN starts with 7, 8, or 9, the year is '19xx', if SN starts with 0, 1, or 2, the year is '20xx'
             year = (['7', '8', '9'].includes(YY.charAt(0))) ? `19${YY}` : (['0', '1', '2'].includes(YY.charAt(0))) ? `20${YY}` : year;
             // if SN ranking # is <= 499 the guitar was produced in MI, or else was produced in TN

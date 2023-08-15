@@ -41,33 +41,34 @@ This application is covered under the MIT License.
 ## Questions
 Please don't hesitate to reach out to me if you have any queries, you can do so by contacting me through my GitHub profile [judemdonahue](https://github.com/judemdonahue) or by sending an email to judemdonahue@gmail.com.
 
-
-
 // 1975-1977
-
 // 99xxxxxx - 1975
 // 00xxxxxx - 1976
 // 06xxxxxx = 1977
-
-
-
 // Following 1977, the primary serialization method is introduced
-
 // YDDDYRRR
 // YY is the production year
 // DDD is the day of the year
 // RRR is the factory ranking/plant designation number.
-// Prior to 1984 when the Kalamazoo, MI factory was closed, the numbers 001-499 indicated Kalamazoo production. Ranking numbers 500-999 continued to indicate Nashville production through 1989.
 
 
 
-// After 1989, all acoustics are made in Bozeman, MT and all electrics are built in Nashville or Memphis.
+
+
+
+// Prior to 1984 when the Kalamazoo, MI factory was closed, the numbers 001-499 indicated Kalamazoo production. Ranking numbers 500-999 continued to indicate Nashville production through 1989. !!
+
+// After 1989, all acoustics are made in Bozeman, MT and all electrics are built in Nashville or Memphis. !!
 
 // RRR numbers for acoustics start each day at 001
 // RRR numbers for electrics may start as low as the 300s
 // Examples:
 // 70108276 means the instrument was produced on Jan. 10, 1978, in Kalamazoo and was the 276th instrument stamped that day.
 // 82765501 means the instrument was produced on Oct. 3, 1985, in Nashville and was the 1st instrument stamped that day.
+
+
+
+
 
 
 

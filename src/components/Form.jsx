@@ -44,6 +44,7 @@ function Form() {
               RRR = sn.substring(5,8);
               break;
             case `00`:
+              // if chartAt(4)
               YY = `76`
               DDD = sn.substring(2,5);
               RRR = sn.substring(5,8);
@@ -54,17 +55,20 @@ function Form() {
               RRR = sn.substring(5,8);
               break;
           }
-
-          
-
             // if SN starts with 7, 8, or 9, the year is '19xx', if SN starts with 0, 1, or 2, the year is '20xx'
             year = (['7', '8', '9'].includes(YY.charAt(0))) ? `19${YY}` : (['0', '1', '2'].includes(YY.charAt(0))) ? `20${YY}` : year;
             // if SN ranking # is <= 499 the guitar was produced in MI, or else was produced in TN
-            plant = (RRR <= 499) ? `Kalamzoo, MI` : `Nashville, TN`;
+            plant = (RRR <= 499) ? `factory: Kalamzoo, MI` : `factory: Nashville, TN`;
             // String manipulation trimming the date value
             let date = new String(dateFromDay(year, parseInt(DDD, 10))).slice(3,15);
+            if (Number(year) >= 1984){
+              plant = `Unknown`;
+            }
+            if (Number(year) >= 1989){
+              plant = `factory: Bozeman, MT (Acoustic) / Nashville, TN (Electric)`;
+            }
             // Output statement
-            const generatedOutput =`This guitar was manufactured ${date}, factory: ${plant}`  ;
+            const generatedOutput =`This guitar was manufactured ${date}, ${plant}`  ;
             setReturnData(generatedOutput);
             break;
         // 8 DIGIT SN END //
